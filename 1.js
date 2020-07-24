@@ -21,11 +21,13 @@ app.post("/kubus", (req,res) => {
 
     let sisi = Number(req.body.sisi) 
 
-    let luaspermukaanA = Math.pow(sisi,3)
+    let luaspermukaankubus = Math.pow(sisi,2) * 6
+    let volumekubus = Math.pow(sisi,3)
 
     let response = {
         sisi: sisi,
-        luaspermukaanA: luaspermukaanA,
+        volumekubus: volumekubus, 
+        luaspermukaankubus: luaspermukaankubus,
     }
 
     res.json(response)
@@ -37,13 +39,15 @@ app.post("/balok", (req,res) => {
     let lebar = Number(req.body.lebar)
     let tinggi = Number(req.body.tinggi) 
 
-    let luaspermukaanB = 2 * (panjang * lebar + lebar * tinggi + panjang * tinggi)
+    let luaspermukaanbalok = 2 * (panjang * lebar + lebar * tinggi + panjang * tinggi)
+    let voulmebalok = panjang * lebar * tinggi
 
     let response = {
         panjang: panjang,
         lebar: lebar,
         tinggi: tinggi,
-        luaspermukaanB: luaspermukaanB,
+        luaspermukaanbalok: luaspermukaanbalok,
+        voulmebalok: voulmebalok,
     }
 
     res.json(response)
@@ -55,17 +59,19 @@ app.post("/prisma_segitiga", (req,res) => {
     let tinggi = Number(req.body.tinggi)
     let tinggiprisma = Number(req.body.tinggiprisma) 
 
-    let luas = alas * tinggi / 2
-    let luassisi = alas * tinggiprisma * alas
-    let luaspermukaanC =    luas * 2 + luassisi * 3 
+    let luasalas = alas * tinggi / 2
+    let luassisi = alas * tinggiprisma * 3
+    let luaspermukaanprismasegitiga =    luasalas * 2 + luassisi * 3 
+    let volumeprismasegitiga = luasalas * tinggi
 
     let response = {
         alas: alas,
         tinggi: tinggi,
         tinggiprisma: tinggiprisma,
-        luas: luas,
+        luasalas: luasalas,
         luassisi: luassisi,
-        luaspermukaanC: luaspermukaanC,
+        luaspermukaanprismasegitiga: luaspermukaanprismasegitiga,
+        volumeprismasegitiga: volumeprismasegitiga,
     }
 
     res.json(response)
@@ -77,18 +83,16 @@ app.post("/limas_segiempat", (req,res) => {
     let tinggilimas = Number(req.body.tinggilimas) 
 
     let luassisiprisma = sisi * tinggilimas / 2
-    let luaspermukaanD = Math.pow(sisi,2) + luassisiprisma * 4
+    let luaspermukaanlimasegiempat = Math.pow(sisi,2) + luassisiprisma * 4
+    let volumelimassegiempat = Math.pow(sisi,2) * tinggilimas / 3
 
     let response = {
         sisi: sisi,
         tinggilimas: tinggilimas,
         luassisiprisma: luassisiprisma,
-        luaspermukaanD: luaspermukaanD,
+        luaspermukaanlimasegiempat: luaspermukaanlimasegiempat,
+        volumelimassegiempat: volumelimassegiempat,
     }
 
     res.json(response)
 })
-
-
-
-
